@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: #0ff;
+    font-family: monospace;
+}
+#binaryClock {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.unit-label {
+    font-size: 1.2rem;
+    text-align: center;
+}
+.bits {
+    display: flex;
+    gap: 5px;
+}
+.flip-container {
+    perspective: 1000px;
+}
+.flip-card {
+    position: relative;
+    width: 40px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    background: #111;
+    color: #0ff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #0ff inset;
+    overflow: hidden;
+}
+.top, .bottom, .flip-top, .flip-bottom {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+}
+.top { top:0; height:100%; }
+.bottom { bottom:0; height:50%; visibility:hidden; }
+.flip-top { top:0; height:50%; transform-origin:bottom; visibility:hidden; }
+.flip-bottom { bottom:0; height:50%; transform-origin:top; transform:rotateX(90deg); visibility:hidden; }
+.animate .flip-top { visibility:visible; animation:flipTop .35s forwards; }
+.animate .flip-bottom { visibility:visible; animation:flipBottom .35s forwards; }
+@keyframes flipTop {0%{transform:rotateX(0)}100%{transform:rotateX(-90deg)}}
+@keyframes flipBottom {0%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+@media(max-width:600px){.flip-card{width:30px;height:45px;line-height:45px;font-size:1rem;}}
